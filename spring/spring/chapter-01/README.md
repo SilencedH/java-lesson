@@ -1,6 +1,7 @@
 ###初步使用spring
->说明:本系列的spring教程参考[w3cschool-spring教程](https://www.w3cschool.cn/wkspring/).<br/>
->spring版本使用 **4.1.6**, jdk使用 **1.8**, ide使用 **IDEA**.
+>本系列的spring教程参考[w3cschool-spring教程](https://www.w3cschool.cn/wkspring/).<br/>
+本系列教程只做简单讲解，并不对spring做深度剖析.<br/>
+spring版本使用 **4.1.6**, jdk使用 **1.8**, ide使用 **IDEA**.
 
 ####下载jar包
 从[spring官网](http://repo.spring.io/release/org/springframework/spring/)根据版本下载相应版本的库.
