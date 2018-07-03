@@ -1,4 +1,4 @@
-##spring IOC容器中的Bean
+--spring IOC容器中的Bean
 ---
 >本系列的spring教程参考[w3cschool-spring教程](https://www.w3cschool.cn/wkspring/).<br/>
 本系列教程只做简单讲解，并不对spring做深度剖析，若想深入了解请等待源码解析系列<br/>
