@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <!-- <bean id="cat" class="net.youzule.spring.chapter02.Bean.Cat">
+        <property name="hands" value="2"></property>
+        <property name="legs" value="2"></property>
+    </bean>-->
+   <!-- <bean id="dog" class="net.youzule.spring.chapter02.Bean.Dog" lazy-init="true">
+        <property name="eyes" value="blue"></property>
+        <property name="mouse" value="big"></property>
+    </bean>
+
+    <bean id="cat" class="net.youzule.spring.chapter02.Bean.Cat">
+        <property name="hands" value="2"></property>
+        <property name="legs" value="2"></property>
+    </bean>-->
+
+    <!--<bean id="tiger" class="net.youzule.spring.chapter02.Bean.Tiger">
+        <property name="legs" value="4"></property>
+    </bean>-->
+
+    <!--<bean id="lion" class="net.youzule.spring.chapter02.Bean.Lion" init-method="init" destroy-method="destory">
+        <property name="lion" value="lion"></property>
+    </bean>-->
+
+    <bean id="monkey" class="net.youzule.spring.chapter02.Bean.Monkey" init-method="init" destroy-method="destroy">
+        <property name="name" value="monkey"></property>
+    </bean>
+
+    <bean id="duck" class="net.youzule.spring.chapter02.Bean.Duck" init-method="init" destroy-method="destroy">
+        <property name="name" value="duck"></property>
+    </bean>
+
+    <bean class="net.youzule.spring.chapter02.Bean.InitializeMonkey"></bean>
+    <bean class="net.youzule.spring.chapter02.Bean.InitializeDuck"></bean>
+
+</beans>

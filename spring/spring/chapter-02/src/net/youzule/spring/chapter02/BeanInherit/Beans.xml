@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="beanTemplate" abstract="true">
+        <property name="name" value="beanTemplateName"></property>
+        <property name="age" value="11"></property>
+    </bean>
+
+    <bean id="parent" class="net.youzule.spring.chapter02.BeanInherit.Parent">
+        <property name="name" value="parentName"></property>
+        <property name="age" value="11"></property>
+        <property name="gender" value="f"></property>
+    </bean>
+
+    <bean id="son" class="net.youzule.spring.chapter02.BeanInherit.Son" parent="beanTemplate">
+        <property name="gender" value="m"></property>
+    </bean>
+
+</beans>
