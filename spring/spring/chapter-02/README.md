@@ -18,11 +18,11 @@ ApplicationContext容器包含了BeanFactory容器的所有功能，所以通常
 
 我们主要讲解ApplicationContext容器。
 
-###一、ApplicationContext容器
+### 一、ApplicationContext容器
 
 >ApplicationContext容器有种实很多实现，我们主要使用两种**ClassPathXmlApplicationContext**和**FileSystemXmlApplicationContext**，其他实现我们在用到时会提起。
 
-####1.1 ClassPathXmlApplicationContext
+#### 1.1 ClassPathXmlApplicationContext
 
 >新建一个类People
 
@@ -80,7 +80,7 @@ public class App {
 }
 ```
 
-####1.2 FileSystemXmlApplicationContext
+#### 1.2 FileSystemXmlApplicationContext
 >前面的过程和XmlApplicationContext一样，只是在App类中，加载配置文件方式不同，如下所示。
 
 ```
@@ -95,9 +95,9 @@ public class App {
 }
 ```
 
-###二、Bean的生命周期
+### 二、Bean的生命周期
 
-####2.1 Bean懒加载
+#### 2.1 Bean懒加载
 
 在spring容器中，Bean的创建默认跟着容器一起的，就是项目启动完成后bean也已经创建完成。不过我们可以设置bea在被调用的时候被创建，即懒加载。
 
@@ -252,7 +252,7 @@ request|每次HTTP请求都会创建一个新的Bean，该作用域仅适用于W
 session|同一个HTTPSession共享一个Bean，不同Session使用不同的Bean，仅适用于WebApplicationContext环境
 global-session|一般用于Portlet应用环境，改作用于仅适用于WebApplicationContext环境
 
-####2.3 Bean的初始化与销毁回调
+#### 2.3 Bean的初始化与销毁回调
 
 我们在初始化完一个bea实例之后，可以对其做一些回调操作，在销毁之后也可以做回调操作。我们有两种方式实现回调，分别是实现 **InitializingBean,DisposableBean**接口和自定义回调函数。
 
@@ -328,7 +328,7 @@ Tiger{legs='4'}
 destory call back
 ```
 
-#####2.3.2 自定义回调函数
+##### 2.3.2 自定义回调函数
 
 使用自定义回调函数的方式更加灵活，也是推荐使用的方式。只需要在配置文件中指定回调函数方法即可。
 
@@ -397,7 +397,7 @@ public class App {
     **/
 ```
 
-####2.4 Bean后置处理器
+#### 2.4 Bean后置处理器
 BeanPostProcessor接口定义回调方法，你可以实现该方法来提供自己的实例化逻辑，依赖解析逻辑等。你也可以在 Spring 容器通过插入一个或多个 BeanPostProcessor 的实现来完成实例化，配置和初始化一个bean之后实现一些自定义逻辑回调方法。
 
 你可以配置多个 BeanPostProcesso r接口，通过设置 BeanPostProcessor 实现的 Ordered 接口提供的 order 属性来控制这些 BeanPostProcessor 接口的执行顺序。
@@ -493,7 +493,7 @@ public class App {
  destroy method...
 ```
 
-####2.5 Bean继承
+#### 2.5 Bean继承
 
 bean 定义可以包含很多的配置信息，包括构造函数的参数，属性值，容器的具体信息例如初始化方法，静态工厂方法名，等等。
 
@@ -643,7 +643,7 @@ Parent{name='parentName', age=11, gender='f'}
 Son{name='parentName', age=11, gender='m'}
 ```
 
-#####2.5.2 属性模板
+##### 2.5.2 属性模板
 
 父 bean 自身不能被实例化，因为它是不完整的，而且它也被明确地标记为抽象的。当一个定义是抽象的，它仅仅作为一个纯粹的模板 bean 定义来使用的，充当子定义的父定义使用。
 
