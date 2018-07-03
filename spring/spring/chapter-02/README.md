@@ -1,4 +1,5 @@
 ##spring IOC容器中的Bean
+
 ---
 >本系列的spring教程参考[w3cschool-spring教程](https://www.w3cschool.cn/wkspring/).<br/>
 本系列教程只做简单讲解，并不对spring做深度剖析，若想深入了解请等待源码解析系列<br/>
@@ -17,6 +18,7 @@ ApplicationContext容器包含了BeanFactory容器的所有功能，所以通常
 我们主要讲解ApplicationContext容器。
 
 ###一、ApplicationContext容器
+
 >ApplicationContext容器有种实很多实现，我们主要使用两种**ClassPathXmlApplicationContext**和**FileSystemXmlApplicationContext**，其他实现我们在用到时会提起。
 
 ####1.1 ClassPathXmlApplicationContext
