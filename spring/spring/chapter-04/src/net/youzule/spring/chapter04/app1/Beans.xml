@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="wheels" class="net.youzule.spring.chapter04.app1.Wheel">
+        <property name="count" value="4"></property>
+    </bean>
+
+    <!--不自动装配方式-->
+    <!--<bean id="car" class="net.youzule.spring.chapter04.app1.Car">
+        <property name="wheel" ref="wheel"></property>
+        <property name="brand" value="bmw"></property>
+    </bean>-->
+
+    <!--根据名字自动装配-->
+    <bean id="car" class="net.youzule.spring.chapter04.app1.Car" autowire="byName">
+        <property name="brand" value="bmw"></property>
+    </bean>
+</beans>
