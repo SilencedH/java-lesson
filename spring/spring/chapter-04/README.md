@@ -153,10 +153,105 @@ wheel为null。
 
 ### 通过byType自动装配
 
+根据类型自动装配时，依赖bean的名字可以随便取，但是bean只能有一个，否则spring容器不知道要去使用哪个就会抛出异常。
+
+>修改自动注入方式为byType
+
+```
+    <bean id="car" class="net.youzule.spring.chapter04.app1.Car" autowire="byType">
+        <property name="brand" value="bmw"></property>
+    </bean>
+
+     <!-- 名字可以随便取 -->
+     <bean id="wheel" class="net.youzule.spring.chapter04.app1.Wheel">
+        <property name="count" value="4"></property>
+     </bean>
+```
+
+>正常输出
+
+```
+Car{brand='bmw', wheel=Wheel{count=4}}
+```
+
+>如果增加一个wheel bean就会报错
+
+```
+    <bean id="wheel1" class="net.youzule.spring.chapter04.app1.Wheel">
+        <property name="count" value="4"></property>
+    </bean>
+
+    <!-- 第二个bean -->
+    <bean id="wheel2" class="net.youzule.spring.chapter04.app1.Wheel">
+        <property name="count" value="4"></property>
+    </bean>
+```
+
+>输出异常
+
+```
+expected single matching bean but found 2: wheel1,wheel2
+```
+
+
 ### 构造函数和自动装配组合使用
 
+>Car类增加构造函数
 
+```
+ /*增加无参构造函数*/
+    public Car() {
+    }
+    /*增加带参构造函数*/
+    public Car(String brand, Wheel wheel) {
+        this.brand = brand;
+        this.wheel = wheel;
+    }
+```
 
+>修改Beans.xml
+
+```
+ <bean id="wheel" class="net.youzule.spring.chapter04.app1.Wheel">
+        <property name="count" value="4"></property>
+    </bean>
+    <!--根据类型自动装配-->
+    <bean id="car" class="net.youzule.spring.chapter04.app1.Car" autowire="constructor">
+        <constructor-arg value="wheel"></constructor-arg>
+        <property name="brand" value="bmw"></property>
+    </bean>
+```
+
+>输出
+
+```
+Car{brand='bmw', wheel=Wheel{count=4}}
+```
+
+*构造函数和自动装配组合使用，是根据类型自动装配的，而且允许装配多个bean，但是装配时使用的是第一个注入的bean。*
+
+>增加bean并修改顺序和值
+
+```
+<!-- 可以改变wheel 和 wheel1的顺序 -->
+    <bean id="wheel" class="net.youzule.spring.chapter04.app1.Wheel">
+        <property name="count" value="5"></property>
+    </bean>
+    <bean id="wheel1" class="net.youzule.spring.chapter04.app1.Wheel">
+        <property name="count" value="4"></property>
+    </bean>
+    <!--根据类型自动装配-->
+    <bean id="car" class="net.youzule.spring.chapter04.app1.Car" autowire="constructor">
+        <constructor-arg value=""></constructor-arg>
+        <property name="brand" value="bmw"></property>
+    </bean>
+```
+
+>输出结果
+
+```
+Car{brand='bmw', wheel=Wheel{count=5}}
+```
 
 ---
 ** 自动装配的局限性 **
@@ -168,5 +263,7 @@ wheel为null。
 重写的可能性|你可以使用总是重写自动装配的<constructor-arg\>和 <property\>设置来指定依赖关系。
 原始数据类型|你不能自动装配所谓的简单类型包括基本类型，字符串和类。
 混乱的本质|自动装配不如显式装配精确，所以如果可能的话尽可能使用显式装配。
+
+---
 
 --完--

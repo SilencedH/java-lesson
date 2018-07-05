@@ -12,6 +12,15 @@ public class Car {
 
     private Wheel wheel;
 
+    /*增加无参构造函数*/
+    public Car() {
+    }
+    /*增加带参构造函数*/
+    public Car(String brand, Wheel wheel) {
+        this.brand = brand;
+        this.wheel = wheel;
+    }
+
     public String getBrand() {
         return brand;
     }
