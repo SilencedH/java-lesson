@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--注入logging bean-->
+    <bean id="logging" class="net.youzule.spring.chapter06.app1.Logging"></bean>
+
+    <!--注入student bean-->
+    <bean id="student" class="net.youzule.spring.chapter06.app1.Student">
+        <property name="name" value="sean"></property>
+        <property name="age" value="11"></property>
+    </bean>
+
+    <!--aop配置-->
+    <aop:config>
+        <aop:aspect id="log" ref="logging">
+
+            <!--横切关注点，要在哪里进行aop-->
+            <aop:pointcut id="pc" expression="execution(* net.youzule.spring.chapter06.app1.Student.test(..))" />
+
+            <aop:before method="beforeAdvice" pointcut-ref="pc" />
+            <aop:after method="afterAdvice" pointcut-ref="pc" />
+            <aop:after-returning method="afterReturningAdvice" pointcut-ref="pc" returning="returnObject" />
+            <aop:after-throwing method="exceptionAdvice" pointcut-ref="pc" throwing="e" />
+        </aop:aspect>
+
+    </aop:config>
+</beans>
