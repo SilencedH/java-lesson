@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/shiro-chapter-01/shiro-chapter-01.iml" filepath="$PROJECT_DIR$/shiro-chapter-01/shiro-chapter-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shiro-chapter-02/shiro-chapter-02.iml" filepath="$PROJECT_DIR$/shiro-chapter-02/shiro-chapter-02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shiro-chapter-03/shiro-chapter-03.iml" filepath="$PROJECT_DIR$/shiro-chapter-03/shiro-chapter-03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shiro-chapter-04/shiro-chapter-04.iml" filepath="$PROJECT_DIR$/shiro-chapter-04/shiro-chapter-04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shiro-chapter-05/shiro-chapter-05.iml" filepath="$PROJECT_DIR$/shiro-chapter-05/shiro-chapter-05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shiro-parent.iml" filepath="$PROJECT_DIR$/shiro-parent.iml" />
+    </modules>
+  </component>
+</project>
