@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/chapter-01/chapter-01.iml" filepath="$PROJECT_DIR$/chapter-01/chapter-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/concurrency/concurrency.iml" filepath="$PROJECT_DIR$/concurrency/concurrency.iml" />
+      <module fileurl="file://$PROJECT_DIR$/concurrency/concurrency-chapter-01/concurrency-chapter-01.iml" filepath="$PROJECT_DIR$/concurrency/concurrency-chapter-01/concurrency-chapter-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/concurrency/concurrency-chapter-02/concurrency-chapter-02.iml" filepath="$PROJECT_DIR$/concurrency/concurrency-chapter-02/concurrency-chapter-02.iml" />
       <module fileurl="file://$PROJECT_DIR$/javase-parent.iml" filepath="$PROJECT_DIR$/javase-parent.iml" />
     </modules>
   </component>
