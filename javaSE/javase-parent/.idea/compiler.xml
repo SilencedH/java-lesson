@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="chapter-01" />
         <module name="concurrency-chapter-01" />
+        <module name="concurrency-chapter-02" />
       </profile>
       <profile name="Annotation profile for concurrency (1)" enabled="true">
         <sourceOutputDir name="../concurrency/target/generated-sources/annotations" />
@@ -17,9 +18,11 @@
         <module name="concurrency (1)" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="concurrency" target="1.8" />
       <module name="concurrency-chapter-01" target="1.8" />
+      <module name="concurrency-chapter-02" target="1.8" />
+      <module name="demo" target="1.8" />
       <module name="javase-parent" target="1.8" />
     </bytecodeTargetLevel>
   </component>
