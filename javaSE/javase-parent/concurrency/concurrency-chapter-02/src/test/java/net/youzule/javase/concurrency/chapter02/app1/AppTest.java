@@ -103,26 +103,21 @@ public class AppTest {
 
     public boolean compareList(List<String> list1, List<String> list2) {
 
-        //定义flag，如果为false说明list1中有一个String在lsit2中找不到，返回false
         boolean flag = true;
 
         for (String item1 : list1) {
             for (String item2 : list2) {
                 if (item1.equals(item2)) {
-                    //list1中的这一个String在list2中找到了，flag改为true,跳出list2
                     flag = true;
                     break;
                 } else {
-                    //list1中这一个String和list2中这一个不相同，继续遍历
                     flag = false;
                 }
             }
-            //遍历list2完后，flag还为false，说明在list2没找到，返回false
             if (!flag) {
                 return false;
             }
         }
-        //遍历完都有,返回true
         return true;
     }
 
@@ -133,8 +128,7 @@ public class AppTest {
     }
 
 
-    public boolean compare3(List<String> list1, List<String> list2) {
-        //判断list1和list2中的值，如果list1中的值在list2中都能找到，返回true，否则返回false
+    public boolean compare(List<String> list1, List<String> list2) {
 
         return false;
     }
