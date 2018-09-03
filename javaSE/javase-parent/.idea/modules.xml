@@ -7,8 +7,12 @@
       <module fileurl="file://$PROJECT_DIR$/concurrency/concurrency-chapter-02/concurrency-chapter-02.iml" filepath="$PROJECT_DIR$/concurrency/concurrency-chapter-02/concurrency-chapter-02.iml" />
       <module fileurl="file://$PROJECT_DIR$/concurrency/concurrency-chapter-03/concurrency-chapter-03.iml" filepath="$PROJECT_DIR$/concurrency/concurrency-chapter-03/concurrency-chapter-03.iml" />
       <module fileurl="file://$PROJECT_DIR$/concurrency/concurrency-chapter-04/concurrency-chapter-04.iml" filepath="$PROJECT_DIR$/concurrency/concurrency-chapter-04/concurrency-chapter-04.iml" />
-      <module fileurl="file://$PROJECT_DIR$/concurrency/concurrency-chapter-04/concurrency-chapter-04.iml" filepath="$PROJECT_DIR$/concurrency/concurrency-chapter-04/concurrency-chapter-04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/concurrency/concurrency-chapter-05/concurrency-chapter-05.iml" filepath="$PROJECT_DIR$/concurrency/concurrency-chapter-05/concurrency-chapter-05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/io/io.iml" filepath="$PROJECT_DIR$/io/io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/io/io-chapter-01/io-chapter-01.iml" filepath="$PROJECT_DIR$/io/io-chapter-01/io-chapter-01.iml" />
       <module fileurl="file://$PROJECT_DIR$/javase-parent.iml" filepath="$PROJECT_DIR$/javase-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/other/other.iml" filepath="$PROJECT_DIR$/other/other.iml" />
+      <module fileurl="file://$PROJECT_DIR$/other/value-reference/value-reference.iml" filepath="$PROJECT_DIR$/other/value-reference/value-reference.iml" />
     </modules>
   </component>
 </project>

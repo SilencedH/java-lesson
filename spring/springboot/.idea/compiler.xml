@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Eclipse" />
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dynamic-source" />
+        <module name="multi-datasource" />
+        <module name="multidatasource" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="dynamic-source" target="1.8" />
+      <module name="multi-datasource" target="1.8" />
+      <module name="springboot" target="1.8" />
+      <module name="springboot-mybatis" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

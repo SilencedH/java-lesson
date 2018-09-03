@@ -12,6 +12,9 @@
         <module name="concurrency-chapter-02" />
         <module name="concurrency-chapter-03" />
         <module name="concurrency-chapter-04" />
+        <module name="concurrency-chapter-05" />
+        <module name="io-chapter-01" />
+        <module name="value-reference" />
       </profile>
       <profile name="Annotation profile for concurrency (1)" enabled="true">
         <sourceOutputDir name="../concurrency/target/generated-sources/annotations" />
@@ -26,8 +29,13 @@
       <module name="concurrency-chapter-02" target="1.8" />
       <module name="concurrency-chapter-03" target="1.8" />
       <module name="concurrency-chapter-04" target="1.8" />
+      <module name="concurrency-chapter-05" target="1.8" />
       <module name="demo" target="1.8" />
+      <module name="io" target="1.8" />
+      <module name="io-chapter-01" target="1.8" />
       <module name="javase-parent" target="1.8" />
+      <module name="other" target="1.8" />
+      <module name="value-reference" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
