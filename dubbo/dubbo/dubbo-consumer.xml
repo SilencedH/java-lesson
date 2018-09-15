@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo" 
+	xmlns="http://www.springframework.org/schema/beans" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo 
+	http://dubbo.apache.org/schema/dubbo/dubbo.xsd"> -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+	<dubbo:application name="dubbo-http" owner="sean"></dubbo:application>
+
+	<!-- <dubbo:registry protocol="" address="zookeeper://47.75.117.97:2181"></dubbo:registry>
+	<dubbo:protocol name="dubbo" port="20889"></dubbo:protocol>
+	<dubbo:reference interface="net.youzule.java.dubbo.db.api.DubboDbService" id="dubboDbService"></dubbo:reference>
+ -->
+	<dubbo:registry id="zk-1" protocol="zookeeper"
+		address="${dubbo.registry.address}" port="${dubbo.registry.port}"
+		timeout="2000" />
+
+
+	<dubbo:protocol id="protocol-dubbo" port="${dubbo.port}"
+		name="dubbo" />
+
+
+	<dubbo:reference registry="zk-1" protocol="protocol-dubbo"
+		timeout="2000" retries="2" interface="net.youzule.java.dubbo.db.api.DubboDbService"
+		id="dubboDbService"></dubbo:reference>
+
+	<dubbo:reference registry="zk-1" protocol="protocol-dubbo"
+		timeout="2000" retries="2" interface="net.youzule.java.dubbo.db.api.FileService"
+		id="fileService"></dubbo:reference>
+
+</beans>

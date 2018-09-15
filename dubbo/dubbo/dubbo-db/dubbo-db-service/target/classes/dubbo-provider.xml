@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo 
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd"> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+
+	<dubbo:application name="dubbo-db-service"></dubbo:application>
+	<dubbo:registry id="zk-1" protocol="zookeeper" address="${dubbo.registry.address}" port="${dubbo.registry.port}"></dubbo:registry>
+	
+	<dubbo:protocol id="protocol-dubbo" name="dubbo" port="${dubbo.registry.port}"></dubbo:protocol>
+	
+	<dubbo:service registry="zk-1" protocol="protocol-dubbo" interface="net.youzule.java.dubbo.db.api.DubboDbService" ref="dubboDbService"></dubbo:service>
+	<bean id="dubboDbService" class="net.youzule.java.dubbo.db.service.module.service.DubboDbServiceImpl"></bean>
+</beans>

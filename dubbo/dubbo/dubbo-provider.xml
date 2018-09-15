@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo 
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd"> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+
+	<!--定义了提供方应用信息，用于计算依赖关系；在 dubbo-admin 或 dubbo-monitor 会显示这个名字，方便辨识 -->
+	<dubbo:application name="dubbo-db-service" owner="sean" organization="youzule" />
+
+	<!--使用 zookeeper 注册中心暴露服务，注意要先开启 zookeeper,还可以使用multicast广播模式 -->
+	<dubbo:registry id="zk-1" protocol="zookeeper" address="${dubbo.registry.address}" port="${dubbo.registry.port}" timeout="2000"/>
+	
+	
+	
+	<!-- 用dubbo协议在20881端口暴露服务,在dubbo:service中使用 -->
+	<dubbo:protocol id="protocol-dubbo" name="dubbo" port="${dubbo.port}" />
+	
+	
+	
+	<!--使用 dubbo 协议实现定义好的 api.PermissionService 接口 -->
+	<dubbo:service registry="zk-1" protocol="protocol-dubbo" timeout="2000" retries="2" interface="net.youzule.java.dubbo.db.api.DubboDbService" ref="dubboDbService" />
+
+	<!--具体实现该接口的 bean -->
+<!-- 	<bean id="dubboDbService" class="net.youzule.java.dubbo.db.service.module.service.DubboDbServiceImpl" />
+ -->
+	<dubbo:service registry="zk-1" protocol="protocol-dubbo" timeout="2000" retries="2" interface="net.youzule.java.dubbo.db.api.FileService" ref="fileService"/>
+	<!--具体实现该接口的 bean -->
+	<!-- <bean id="fileService"
+		class="net.youzule.java.dubbo.db.service.module.service.FileServiceImpl" /> -->
+
+</beans>
