@@ -39,15 +39,20 @@ public class ExcelController {
 		excelService.doResponse(response);
 	}
 	
-	@GetMapping("/export1")
-	public void exportExcel1(HttpServletResponse response) {
+	@GetMapping("/export")
+	public void exportExcel(HttpServletResponse response) {
 		logger.info("导出excel开始");
 		excelService.exportExcel(response);
 	}
 	
-	@GetMapping("/export2")
-	public void exportExcel2(HttpServletResponse response) {
+	@GetMapping("/export1")
+	public void exportExcel1(HttpServletResponse response) {
 		logger.info("导出excel开始");
 		excelService.exportExcel1(response);
+	}
+	@GetMapping("/export2")
+	public String exportExcel2(HttpServletResponse response) {
+		logger.info("导出excel开始");
+		return excelService.exportExcel2(response);
 	}
 }

@@ -1,11 +1,16 @@
 package net.youzule.java.http.file.module.service.impl;
 
+import static org.hamcrest.CoreMatchers.endsWith;
+import static org.junit.Assert.assertArrayEquals;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,9 +26,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import net.youzule.java.http.file.module.service.ExcelService;
-import net.youzule.java.http.file.utils.ExcelUtils;
+import net.youzule.java.http.file.utils.excel.ExcelDataCell;
+import net.youzule.java.http.file.utils.excel.ExcelEntity;
+import net.youzule.java.http.file.utils.excel.ExcelTitleCell;
+import net.youzule.java.http.file.utils.excel.ExcelUtils;
 
 /**
  * @Title: ExcelServiceImpl.java
@@ -75,7 +84,6 @@ public class ExcelServiceImpl implements ExcelService {
 		// 定义一个sheet
 		XSSFSheet xssfSheet = xssfWorkbook.createSheet(sheetName);
 
-		
 		XSSFRow xssfRow = xssfSheet.createRow(0);
 		XSSFCell xssfCell = xssfRow.createCell(0);
 
@@ -108,29 +116,30 @@ public class ExcelServiceImpl implements ExcelService {
 	public void exportExcel1(HttpServletResponse response) {
 		OutputStream outputStream = null;
 		String fileName = "a.xlsx";
-		
+
 		response.reset();
 		response.setHeader("Content-Disposition", "attachment;fileName=" + fileName);
 		response.setContentType("application/ms-excel;charset=utf-8");
 		response.setCharacterEncoding("utf-8");
-		
+
 		XSSFWorkbook xssfWorkbook = null;
 		try {
 			outputStream = response.getOutputStream();
-			String[] titles = {"姓名","年龄"};
+			String[] titles = { "姓名", "年龄" };
 			String sheetName = "学生信息表";
 			List<String[]> data = new ArrayList<>();
-			String[] data1 = {"张三","22"};
-			String[] data2 = {"李四","23"};
+			String[] data1 = { "张三", "22" };
+			String[] data2 = { "李四", "23" };
 			data.add(data1);
 			data.add(data2);
-			
+
 			xssfWorkbook = ExcelUtils.createExcel(titles, sheetName, data);
+
 			xssfWorkbook.write(outputStream);
 			outputStream.flush();
 		} catch (IOException e) {
 			logger.info("io异常", e);
-		}finally {
+		} finally {
 			IOUtils.closeQuietly(outputStream);
 			if (xssfWorkbook != null) {
 				try {
@@ -138,11 +147,93 @@ public class ExcelServiceImpl implements ExcelService {
 				} catch (IOException e) {
 					logger.info("io异常", e);
 				}
-				
+
 			}
 		}
-		
+
 	}
 
-	
+	@Override
+	public String importExcel1(MultipartFile file) {
+
+		return null;
+	}
+
+	@Override
+	public String exportExcel2(HttpServletResponse response) {
+		ExcelEntity excelEntity = new ExcelEntity();
+		
+		//添加表头
+		List<ExcelTitleCell> excelTitles = new ArrayList<>();
+		
+		excelEntity.setTitles(excelTitles);
+		
+		ExcelTitleCell titleCell1= new ExcelTitleCell("String");
+		titleCell1.setValue("姓名");
+		titleCell1.setColumn("name");
+		titleCell1.setWidth(100);
+		excelTitles.add(titleCell1);
+		
+		ExcelTitleCell titleCell2= new ExcelTitleCell("int");
+		titleCell2.setValue("年龄");
+		titleCell2.setColumn("age");
+		titleCell2.setWidth(100);
+		excelTitles.add(titleCell2);
+		
+		ExcelTitleCell titleCell3= new ExcelTitleCell("String");
+		titleCell3.setValue("性别");
+		titleCell3.setColumn("sex");
+		titleCell3.setWidth(100);
+		excelTitles.add(titleCell3);
+		
+		
+		
+		//添加表数据
+		List<Map<String, Object>> sourceData = new ArrayList<>();
+		for (int i = 0; i <= 20; i ++) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("name", "sean" + i);
+			map.put("age", 11 + i);
+			map.put("sex", "M");
+			sourceData.add(map);
+		}
+		
+		List<List<Object>> excelData = new ArrayList<>();
+		excelEntity.setBodyData(excelData);
+		
+		for(Map<String, Object> item:sourceData) {
+			List<Object> excelDataCells = new ArrayList<>();
+			for (int j = 0; j < excelTitles.size(); j ++) {
+				Object value = item.get(excelTitles.get(j).getColumn());
+				excelDataCells.add(value);
+			}
+			excelData.add(excelDataCells);
+		}
+		
+		XSSFWorkbook xssfWorkbook = ExcelUtils.exportExcel(excelEntity);
+
+		OutputStream outputStream = null;
+		response.reset();
+		response.setHeader("Content-Disposition", "attachment;fileName=a.xlsx");
+		response.setContentType("application/ms-excel;charset=utf-8");
+		response.setCharacterEncoding("utf-8");
+
+		try {
+			outputStream = response.getOutputStream();
+			xssfWorkbook.write(outputStream);
+			outputStream.flush();
+		} catch (IOException e) {
+			logger.info("io异常", e);
+		} finally {
+			if (outputStream != null) {
+				try {
+					outputStream.close();
+				} catch (IOException e) {
+				}
+			}
+		}
+
+		return "SUCCESS";
+	}
+
 }
